@@ -7,7 +7,7 @@ image: my-next-app
 # Deploy to these servers.
 servers:
   web:
-    - your.server.ip.address
+    - 37.27.1.181
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,7 +19,7 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: your-domain.com
+  host: guestbook.ronald.ink
   # Proxy connects to your container on port 80 by default.
   app_port: 3000
   healthcheck:
@@ -37,6 +37,10 @@ registry:
   # Always use an access token rather than real password (pulled from .kamal/secrets).
   # password:
   #   - KAMAL_REGISTRY_PASSWORD
+
+# Use a persistent storage volume for sqlite etc
+volumes:
+  - "next_app_storage:/app/storage"
 
 # Configure builder setup.
 builder:
