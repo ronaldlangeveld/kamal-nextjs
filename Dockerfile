@@ -50,6 +50,9 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Create storage directory with proper permissions
+RUN mkdir -p /app/storage && chown -R nextjs:nodejs /app/storage
+
 COPY --from=builder /app/public ./public
 
 # Automatically leverage output traces to reduce image size
